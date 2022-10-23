@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buying</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='styles/global.css') }}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+
+
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4"><img src="/static/logo.png" style="max-width: 10vh;"></span>
+        </a>
+
+        <p> <a href="/">Home</a> | <a href="/about">About</a> | <a href="/dashboard">Dashboard</a> | <a href="/buyRequest"
+                style="font-weight: bold;">Buy</a> | <a href="/sellRequest">Sell</a> | <a href="/logout">Logout</a></p>
+
+    </header>
+
+    <div class="container-sm" style="max-width: 400px;margin-top: 15vh;">
+        <h1 style="margin-bottom:5vh;">View Offer</h1>
+
+        <b>Date & Time</b></br>
+        {{offer.startDate}} - {{offer.endDate}} </br>{{offer.startTime}} - {{offer.endTime}} </br>
+        </br><b>Fund</b></br>{{offer.funds}}</br>
+        </br><b>Location</b></br>{{offer.location}} </br>
+        </br><b>Price</b></br>{{offer.cost}} for ${{offer.offer}} </br>
+        </br><b>User</b></br>{{offer.username}}</br>
+        </br><b>Email</b></br>{{offer.email}}</br>
+        </br><b>Phone Number</b></br>{{offer.phoneNumber}}</br>
+        {{offer.text}}
+        <form id="acceptform" method='post' action="/interested/{{offer.offerId}}">
+            <button type="submit" class="btn-base-bg btn-base-sm radius-3">
+                Interested</button>
+        </form>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

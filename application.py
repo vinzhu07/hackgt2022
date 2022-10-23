@@ -203,7 +203,7 @@ def view_request(requestId):
 
         cursor.execute(f'''SELECT * FROM buzzdash.AcceptedRequest WHERE requestId = "{requestId}";''')
         result1 = cursor.fetchall()
-        if result is not None and result1[0]['username'] == session['username']:
+        if len(result1)>0 and result1[0]['username'] == session['username']:
             request['email'] = item['email']
             request['phoneNumber'] = item['phoneNumber']
 
@@ -305,6 +305,10 @@ def logout():
     print("Logging out")
     session.pop('username')
     return redirect('/') 
+
+@application.route('/about', methods=['GET'])
+def about():
+    return render_template("about.html")
 
 if __name__ == "__main__":
     application.run(debug=True)
